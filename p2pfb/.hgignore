@@ -1,0 +1,15 @@
+syntax: glob
+run/PaxosTester.sh
+bin/*
+linecount.html
+*.swp
+proj/*.class
+proj/proto/*.class
+.project
+.classpath
+storage
+writeups/*.aux
+writeups/*.log
+writeups/*.pdf
+*.log
+output

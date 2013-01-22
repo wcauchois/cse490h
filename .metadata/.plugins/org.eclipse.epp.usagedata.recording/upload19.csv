@@ -1,0 +1,231 @@
+what,kind,bundleId,bundleVersion,description,time
+stopped,bundle,org.eclipse.jdt.junit,3.5.2.r352_v20100113-0800,"org.eclipse.jdt.junit",1294696816281
+stopped,bundle,org.eclipse.jdt.apt.ui,3.3.200.v20090930-2100_R35x,"org.eclipse.jdt.apt.ui",1294696816282
+stopped,bundle,org.eclipse.jdt.debug.ui,3.4.1.v20090811_r351,"org.eclipse.jdt.debug.ui",1294696816283
+stopped,bundle,org.eclipse.jdt.ui,3.5.2.r352_v20100106-0800,"org.eclipse.jdt.ui",1294696816303
+stopped,bundle,org.eclipse.wst.dtd.ui,1.0.400.v200904300717,"org.eclipse.wst.dtd.ui",1294696816304
+activated,perspective,org.eclipse.jdt.ui,,"org.eclipse.jdt.ui.JavaPerspective",1294696821966
+started,bundle,org.eclipse.osgi,3.5.2.R35x_v20100126,"org.eclipse.osgi",1294696821967
+started,bundle,org.eclipse.equinox.simpleconfigurator,1.0.101.R35x_v20090807-1100,"org.eclipse.equinox.simpleconfigurator",1294696821967
+started,bundle,com.ibm.icu,4.0.1.v20090822,"com.ibm.icu",1294696821968
+started,bundle,org.eclipse.core.contenttype,3.4.1.R35x_v20090826-0451,"org.eclipse.core.contenttype",1294696821968
+started,bundle,org.eclipse.core.databinding.observable,1.2.0.M20090902-0800,"org.eclipse.core.databinding.observable",1294696821969
+started,bundle,org.eclipse.core.expressions,3.4.101.R35x_v20100209,"org.eclipse.core.expressions",1294696821969
+started,bundle,org.eclipse.core.filebuffers,3.5.0.v20090526-2000,"org.eclipse.core.filebuffers",1294696821969
+started,bundle,org.eclipse.core.filesystem,1.2.1.R35x_v20091203-1235,"org.eclipse.core.filesystem",1294696821970
+started,bundle,org.eclipse.core.jobs,3.4.100.v20090429-1800,"org.eclipse.core.jobs",1294696821970
+started,bundle,org.eclipse.core.net,1.2.1.r35x_20090812-1200,"org.eclipse.core.net",1294696821970
+started,bundle,org.eclipse.core.resources,3.5.2.R35x_v20091203-1235,"org.eclipse.core.resources",1294696821971
+started,bundle,org.eclipse.core.runtime,3.5.0.v20090525,"org.eclipse.core.runtime",1294696821972
+started,bundle,org.eclipse.core.runtime.compatibility,3.2.0.v20090413,"org.eclipse.core.runtime.compatibility",1294696821972
+started,bundle,org.eclipse.core.runtime.compatibility.auth,3.2.100.v20090413,"org.eclipse.core.runtime.compatibility.auth",1294696821972
+started,bundle,org.eclipse.debug.core,3.5.1.v20091103_r352,"org.eclipse.debug.core",1294696821973
+started,bundle,org.eclipse.ecf,3.0.0.v20090831-1906,"org.eclipse.ecf",1294696821974
+started,bundle,org.eclipse.ecf.filetransfer,3.0.0.v20090831-1906,"org.eclipse.ecf.filetransfer",1294696821974
+started,bundle,org.eclipse.ecf.identity,3.0.0.v20090831-1906,"org.eclipse.ecf.identity",1294696821974
+started,bundle,org.eclipse.ecf.provider.filetransfer,3.0.1.v20090831-1906,"org.eclipse.ecf.provider.filetransfer",1294696821975
+started,bundle,org.eclipse.ecf.provider.filetransfer.httpclient,3.0.1.v20090831-1906,"org.eclipse.ecf.provider.filetransfer.httpclient",1294696821975
+started,bundle,org.eclipse.epp.usagedata.gathering,1.1.1.R201001291118,"org.eclipse.epp.usagedata.gathering",1294696821976
+started,bundle,org.eclipse.epp.usagedata.recording,1.1.1.R201001291118,"org.eclipse.epp.usagedata.recording",1294696821976
+started,bundle,org.eclipse.equinox.app,1.2.1.R35x_v20091203,"org.eclipse.equinox.app",1294696821976
+started,bundle,org.eclipse.equinox.common,3.5.1.R35x_v20090807-1100,"org.eclipse.equinox.common",1294696821976
+started,bundle,org.eclipse.equinox.ds,1.1.1.R35x_v20090806,"org.eclipse.equinox.ds",1294696821977
+started,bundle,org.eclipse.equinox.frameworkadmin,1.0.100.v20090520-1905,"org.eclipse.equinox.frameworkadmin",1294696821977
+started,bundle,org.eclipse.equinox.frameworkadmin.equinox,1.0.101.R35x_v20091214,"org.eclipse.equinox.frameworkadmin.equinox",1294696821977
+started,bundle,org.eclipse.equinox.p2.core,1.0.101.R35x_v20090819,"org.eclipse.equinox.p2.core",1294696821978
+started,bundle,org.eclipse.equinox.p2.director,1.0.101.R35x_v20100112,"org.eclipse.equinox.p2.director",1294696821978
+started,bundle,org.eclipse.equinox.p2.directorywatcher,1.0.100.v20090525,"org.eclipse.equinox.p2.directorywatcher",1294696821978
+started,bundle,org.eclipse.equinox.p2.engine,1.0.102.R35x_v20091117,"org.eclipse.equinox.p2.engine",1294696821979
+started,bundle,org.eclipse.equinox.p2.exemplarysetup,1.0.100.v20090520-1905,"org.eclipse.equinox.p2.exemplarysetup",1294696821979
+started,bundle,org.eclipse.equinox.p2.garbagecollector,1.0.100.v20090520-1905,"org.eclipse.equinox.p2.garbagecollector",1294696821979
+started,bundle,org.eclipse.equinox.p2.metadata.repository,1.0.101.R35x_v20090812,"org.eclipse.equinox.p2.metadata.repository",1294696821979
+started,bundle,org.eclipse.equinox.p2.reconciler.dropins,1.0.100.v20090520-1905,"org.eclipse.equinox.p2.reconciler.dropins",1294696821980
+started,bundle,org.eclipse.equinox.p2.repository,1.0.1.R35x_v20100105,"org.eclipse.equinox.p2.repository",1294696821980
+started,bundle,org.eclipse.equinox.p2.ui.sdk.scheduler,1.0.0.v20090520-1905,"org.eclipse.equinox.p2.ui.sdk.scheduler",1294696821980
+started,bundle,org.eclipse.equinox.p2.updatechecker,1.1.0.v20090520-1905,"org.eclipse.equinox.p2.updatechecker",1294696821981
+started,bundle,org.eclipse.equinox.preferences,3.2.301.R35x_v20091117,"org.eclipse.equinox.preferences",1294696821981
+started,bundle,org.eclipse.equinox.registry,3.4.100.v20090520-1800,"org.eclipse.equinox.registry",1294696821981
+started,bundle,org.eclipse.equinox.security,1.0.100.v20090520-1800,"org.eclipse.equinox.security",1294696821982
+started,bundle,org.eclipse.equinox.simpleconfigurator.manipulator,1.0.101.R35x_v20100209,"org.eclipse.equinox.simpleconfigurator.manipulator",1294696821982
+started,bundle,org.eclipse.equinox.util,1.0.100.v20090520-1800,"org.eclipse.equinox.util",1294696821982
+started,bundle,org.eclipse.help,3.4.1.v20090805_35x,"org.eclipse.help",1294696821983
+started,bundle,org.eclipse.jdt.core,3.5.2.v_981_R35x,"org.eclipse.jdt.core",1294696822004
+started,bundle,org.eclipse.jdt.core.manipulation,1.3.0.v20090603,"org.eclipse.jdt.core.manipulation",1294696822005
+started,bundle,org.eclipse.jdt.launching,3.5.1.v20100108_r352,"org.eclipse.jdt.launching",1294696822006
+started,bundle,org.eclipse.jdt.ui,3.5.2.r352_v20100106-0800,"org.eclipse.jdt.ui",1294696822008
+started,bundle,org.eclipse.jface,3.5.2.M20100120-0800,"org.eclipse.jface",1294696822008
+started,bundle,org.eclipse.jsch.core,1.1.100.I20090430-0408,"org.eclipse.jsch.core",1294696822009
+started,bundle,org.eclipse.team.core,3.5.1.r35x_20100113-0800,"org.eclipse.team.core",1294696822009
+started,bundle,org.eclipse.team.cvs.core,3.3.200.I20090430-0408,"org.eclipse.team.cvs.core",1294696822010
+started,bundle,org.eclipse.team.cvs.ui,3.3.202.r35x_20090930-0800,"org.eclipse.team.cvs.ui",1294696822010
+started,bundle,org.eclipse.team.ui,3.5.0.I20090430-0408,"org.eclipse.team.ui",1294696822011
+started,bundle,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui",1294696822012
+started,bundle,org.eclipse.ui.console,3.4.0.v20090513,"org.eclipse.ui.console",1294696822012
+started,bundle,org.eclipse.ui.editors,3.5.0.v20090527-2000,"org.eclipse.ui.editors",1294696822013
+started,bundle,org.eclipse.ui.forms,3.4.1.v20090714_35x,"org.eclipse.ui.forms",1294696822014
+started,bundle,org.eclipse.ui.ide,3.5.2.M20100113-0800,"org.eclipse.ui.ide",1294696822015
+started,bundle,org.eclipse.ui.net,1.2.1.r35x_20090812-1200,"org.eclipse.ui.net",1294696822015
+started,bundle,org.eclipse.ui.views,3.4.1.M20090826-0800,"org.eclipse.ui.views",1294696822015
+started,bundle,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"org.eclipse.ui.workbench",1294696822016
+started,bundle,org.eclipse.ui.workbench.texteditor,3.5.1.r352_v20100105,"org.eclipse.ui.workbench.texteditor",1294696822017
+started,bundle,org.eclipse.update.configurator,3.3.0.v20090312,"org.eclipse.update.configurator",1294696822017
+started,bundle,org.eclipse.update.core,3.2.300.v20090525,"org.eclipse.update.core",1294696822017
+started,bundle,org.eclipse.update.scheduler,3.2.200.v20081127,"org.eclipse.update.scheduler",1294696822018
+started,bundle,org.eclipse.mylyn.bugzilla.core,3.4.2.v20100902-0100-e3x,"org.eclipse.mylyn.bugzilla.core",1294696822018
+started,bundle,org.eclipse.mylyn.bugzilla.ui,3.4.2.v20100909-0100-e3x,"org.eclipse.mylyn.bugzilla.ui",1294696822018
+started,bundle,org.eclipse.mylyn.commons.net,3.4.1.v20100625-2100-e3x,"org.eclipse.mylyn.commons.net",1294696822018
+started,bundle,org.eclipse.mylyn.commons.ui,3.4.0.v20100608-0100-e3x,"org.eclipse.mylyn.commons.ui",1294696822019
+started,bundle,org.eclipse.mylyn.context.core,3.4.1.v20100909-0100-e3x,"org.eclipse.mylyn.context.core",1294696822019
+started,bundle,org.eclipse.mylyn.context.ui,3.4.1.v20100909-0100-e3x,"org.eclipse.mylyn.context.ui",1294696822020
+started,bundle,org.eclipse.mylyn.monitor.ui,3.4.0.v20100608-0100-e3x,"org.eclipse.mylyn.monitor.ui",1294696822020
+started,bundle,org.eclipse.mylyn.tasks.ui,3.4.2.v20100902-0100-e3x,"org.eclipse.mylyn.tasks.ui",1294696822021
+started,bundle,org.eclipse.mylyn.team.ui,3.4.2.v20100909-0100-e3x,"org.eclipse.mylyn.team.ui",1294696822021
+os,sysinfo,,,"linux",1294696822024
+arch,sysinfo,,,"x86",1294696822024
+ws,sysinfo,,,"gtk",1294696822024
+locale,sysinfo,,,"en_US",1294696822024
+processors,sysinfo,,,"4",1294696822024
+java.runtime.name,sysinfo,,,"Java(TM) SE Runtime Environment",1294696822024
+java.runtime.version,sysinfo,,,"1.6.0_22-b04",1294696822024
+java.specification.name,sysinfo,,,"Java Platform API Specification",1294696822024
+java.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1294696822024
+java.specification.version,sysinfo,,,"1.6",1294696822024
+java.vendor,sysinfo,,,"Sun Microsystems Inc.",1294696822024
+java.version,sysinfo,,,"1.6.0_22",1294696822024
+java.vm.info,sysinfo,,,"mixed mode, sharing",1294696822024
+java.vm.name,sysinfo,,,"Java HotSpot(TM) Client VM",1294696822024
+java.vm.specification.name,sysinfo,,,"Java Virtual Machine Specification",1294696822024
+java.vm.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1294696822024
+java.vm.specification.version,sysinfo,,,"1.0",1294696822024
+java.vm.vendor,sysinfo,,,"Sun Microsystems Inc.",1294696822024
+java.vm.version,sysinfo,,,"17.1-b03",1294696822024
+activated,view,org.eclipse.jdt.ui,3.5.2.r352_v20100106-0800,"org.eclipse.jdt.ui.PackageExplorer",1294696822593
+started,bundle,com.android.ide.eclipse.ddms,8.0.1.v201012062107-82219,"com.android.ide.eclipse.ddms",1294696822737
+started,bundle,com.android.ide.eclipse.adt,8.0.1.v201012062107-82219,"com.android.ide.eclipse.adt",1294696822904
+started,bundle,org.eclipse.ltk.core.refactoring,3.5.0.v20090513-2000,"org.eclipse.ltk.core.refactoring",1294696822967
+started,bundle,org.eclipse.ltk.ui.refactoring,3.4.101.r352_v20100209,"org.eclipse.ltk.ui.refactoring",1294696822969
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.file.refresh",1294696824152
+started,bundle,org.eclipse.jdt.apt.core,3.3.202.R35x_v20091130-2300,"org.eclipse.jdt.apt.core",1294696824620
+started,bundle,org.eclipse.jdt.apt.pluggable.core,1.0.201.R35x_v20090925-1100,"org.eclipse.jdt.apt.pluggable.core",1294696824625
+started,bundle,org.eclipse.compare.core,3.5.0.I20090430-0408,"org.eclipse.compare.core",1294696831822
+opened,editor,org.eclipse.jdt.ui,3.5.2.r352_v20100106-0800,"org.eclipse.jdt.ui.CompilationUnitEditor",1294696831886
+activated,editor,org.eclipse.jdt.ui,3.5.2.r352_v20100106-0800,"org.eclipse.jdt.ui.CompilationUnitEditor",1294696831990
+error,log,,,"Exception occurred during problem detection:\n----------------------------------- SOURCE BEGIN -------------------------------------\nimport java.io.FileNotFoundException;\nimport java.io.IOException;\nimport java.lang.reflect.Method;\n\nimport edu.washington.cs.cse490h.lib.Callback;\nimport edu.washington.cs.cse490h.lib.Node;\nimport edu.washington.cs.cse490h.lib.PersistentStorageReader;\nimport edu.washington.cs.cse490h.lib.PersistentStorageWriter;\n\n/**\n * Extension to the Node class that adds support for a reliable, in-order\n * messaging layer.\n * \n * Nodes that extend this class for the support should use RIOSend and\n * onRIOReceive to send/receive the packets from the RIO layer. The underlying\n * layer can also be used by sending using the regular send() method and\n * overriding the onReceive() method to include a call to super.onReceive()\n */\npublic abstract class RIONode extends Node {\n\tprivate ReliableInOrderMsgLayer RIOLayer;\n\t\n\tpublic static int NUM_NODES = 10;\n\tprivate static final String ID_FILENAME = ""id.txt"";\n\t\n\tpublic RIONode() {\n\t\tRIOLayer = new ReliableInOrderMsgLayer(this);\n\t}\n\t\n\tprotected void ensureRIO() { /// XXX MAJOR CLUDGE\n\t\ttry {\n\t\t\tif(RIOLayer.getInstanceID() == -1)\n\t\t\t\tRIOLayer.setInstanceID(nextInstanceID());\n\t\t} catch(IOException e) {\n\t\t\te.printStackTrace();\n\t\t\t// ignored\n\t\t}\n\t}\n\t\n\t/**\n\t * Assign a unique identifier to this node\n\t * \n     * @return The unique instance identifier for this node\n\t * @throws IOException \n     */\n    private int nextInstanceID() throws IOException {\n        int oldID;\n        PersistentStorageReader idReader = null;\n        \n        try {\n            idReader = getReader(ID_FILENAME);\n            String oldIDString = idReader.readLine();\n            if (oldIDString == null) {\n                throw new AssertionError(ID_FILENAME + ""should have contained an ID!"");\n            }\n            \n            oldID = Integer.parseInt(oldIDString);\n        } catch (FileNotFoundException e) {\n            // ideallly, the node class would have a method method fileExists?()\n            // but there is no such method, so we just catch the exception if a file didn't exist\n            oldID = -1;\n        } finally {\n            if(idReader != null) {\n                idReader.close();\n            }\n        }\n        \n        int newID = oldID + 1; // XXX 2^32 - 1 overflow?\n        \n        PersistentStorageWriter idWriter = null;\n        try {\n            idWriter = getWriter(ID_FILENAME, false);\n            idWriter.write(newID + ""\\n"");\n        } finally {\n            if(idWriter != null) {\n                idWriter.close();\n            }\n        }\n        \n        return newID;\n    }\n\n    @Override\n\tpublic void onReceive(Integer from, int pktProtocol, byte[] msg) {\n    \tensureRIO();\n\t\tif(PacketProtocol.DATA.equals(pktProtocol)) {\n\t\t\tRIOLayer.RIODataReceive(from, msg);\n\t\t}else if(PacketProtocol.SYN.equals(pktProtocol)) {\n\t\t\tRIOLayer.RIOSynReceive(from, msg);\n\t\t}else if(PacketProtocol.DATA_ACK.equals(pktProtocol)) {\n\t\t\tRIOLayer.RIODataAckReceive(from, msg);\n\t\t}else if(PacketProtocol.SYN_ACK.equals(pktProtocol)) {\n\t\t\tRIOLayer.RIOSynAckReceive(from, msg);\n\t\t}else if(PacketProtocol.RE_CONN.equals(pktProtocol)) {\n\t\t\tRIOLayer.RIOReConnReceive(from, msg);\n\t\t}\n\t}\n\n\t/**\n\t * Send a message using the reliable, in-order delivery layer\n\t * \n\t * @param destAddr\n\t *            The address to send to\n\t * @param protocol\n\t *            The protocol identifier of the message\n\t * @param payload\n\t *            The payload of the message\n\t */\n\tpublic void RIOSend(int destAddr, RIOProtocol protocol, byte[] payload) {\n\t\tensureRIO();\n\t\tRIOLayer.RIOSend(destAddr, protocol, payload);\n\t}\n\n\t/**\n\t * Method that is called by the RIO layer when a message is to be delivered.\n\t * \n\t * @param from\n\t *            The address from which the message was received\n\t * @param protocol\n\t *            The protocol identifier of the message\n\t * @param msg\n\t *            The message that was received\n\t */\n\tpublic abstract void onRIOReceive(Integer from, RIOProtocol protocol, byte[] msg);\n\t\n\tpublic void send(int destAddr, PacketProtocol protocol, byte[] payload) {\n\t\tensureRIO();\n\t\tsend(destAddr, protocol.toInteger(), payload);\n\t}\n\t\n\t@Override\n\tpublic String toString() {\n\t\treturn RIOLayer.toString();\n\t}\n}\n\n----------------------------------- SOURCE END -------------------------------------",1294696832477
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696832480
+error,log,,,"Error in JDT Core during reconcile",1294696832482
+started,bundle,org.eclipse.core.variables,3.2.200.v20090521,"org.eclipse.core.variables",1294696832556
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833075
+error,log,,,"Error in JDT Core during AST creation",1294696833076
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833117
+error,log,,,"Error in JDT Core during AST creation",1294696833117
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833137
+error,log,,,"Error in JDT Core during AST creation",1294696833137
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833145
+error,log,,,"Error in JDT Core during AST creation",1294696833145
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833153
+error,log,,,"Error in JDT Core during AST creation",1294696833153
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833160
+error,log,,,"Error in JDT Core during AST creation",1294696833160
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833167
+error,log,,,"Error in JDT Core during AST creation",1294696833167
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833174
+error,log,,,"Error in JDT Core during AST creation",1294696833174
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833181
+error,log,,,"Error in JDT Core during AST creation",1294696833181
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833188
+error,log,,,"Error in JDT Core during AST creation",1294696833188
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833194
+error,log,,,"Error in JDT Core during AST creation",1294696833195
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833201
+error,log,,,"Error in JDT Core during AST creation",1294696833201
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833207
+error,log,,,"Error in JDT Core during AST creation",1294696833207
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833214
+error,log,,,"Error in JDT Core during AST creation",1294696833214
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833219
+error,log,,,"Error in JDT Core during AST creation",1294696833220
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833225
+error,log,,,"Error in JDT Core during AST creation",1294696833225
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833230
+error,log,,,"Error in JDT Core during AST creation",1294696833231
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833236
+error,log,,,"Error in JDT Core during AST creation",1294696833236
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833241
+error,log,,,"Error in JDT Core during AST creation",1294696833242
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833246
+error,log,,,"Error in JDT Core during AST creation",1294696833247
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833252
+error,log,,,"Error in JDT Core during AST creation",1294696833252
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833257
+error,log,,,"Error in JDT Core during AST creation",1294696833257
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833262
+error,log,,,"Error in JDT Core during AST creation",1294696833262
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833267
+error,log,,,"Error in JDT Core during AST creation",1294696833267
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833274
+error,log,,,"Error in JDT Core during AST creation",1294696833274
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833281
+error,log,,,"Error in JDT Core during AST creation",1294696833282
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833287
+error,log,,,"Error in JDT Core during AST creation",1294696833287
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833293
+error,log,,,"Error in JDT Core during AST creation",1294696833293
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833299
+error,log,,,"Error in JDT Core during AST creation",1294696833299
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833306
+error,log,,,"Error in JDT Core during AST creation",1294696833306
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833312
+error,log,,,"Error in JDT Core during AST creation",1294696833312
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833320
+error,log,,,"Error in JDT Core during AST creation",1294696833320
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833324
+error,log,,,"Error in JDT Core during AST creation",1294696833325
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833329
+error,log,,,"Error in JDT Core during AST creation",1294696833329
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833333
+error,log,,,"Error in JDT Core during AST creation",1294696833334
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833338
+error,log,,,"Error in JDT Core during AST creation",1294696833338
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696833342
+error,log,,,"Error in JDT Core during AST creation",1294696833343
+started,bundle,org.eclipse.jdt.junit,3.5.2.r352_v20100113-0800,"org.eclipse.jdt.junit",1294696835201
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294696836975
+error,log,,,"Error in JDT Core during AST creation",1294696836975
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294696848548
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697080167
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294697081321
+error,log,,,"Error in JDT Core during AST creation",1294697081321
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697081395
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697235808
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697236738
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697237697
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697237876
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697238103
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697238213
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697347365
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294697349127
+error,log,,,"Error in JDT Core during AST creation",1294697349128
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294697350538
+error,log,,,"Error in JDT Core during AST creation",1294697350538
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697356313
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697358924
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697359771
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697360036
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697360465
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697373895
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697373953
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697374995
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697375417
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697446753
+error,log,,,"Unhandled event loop exception",1294697447772
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.edit.findReplace",1294697447862
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697447876
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697449957
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.edit.findReplace",1294697450984
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697450998
+error,log,,,"Problems occurred when invoking code from plug-in: ""org.eclipse.jdt.ui"".",1294697451048
+error,log,,,"Error in JDT Core during AST creation",1294697451048
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697451582
+activated,view,org.eclipse.ui.views,3.4.1.M20090826-0800,"org.eclipse.ui.views.ContentOutline",1294697452280
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697452746
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1294697453819

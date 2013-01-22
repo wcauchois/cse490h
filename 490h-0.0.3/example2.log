@@ -1,0 +1,37 @@
+0 node:0 START
+1 node:1 START
+2 node:0 TIMESTEP time:1
+3 node:1 TIMESTEP time:1
+4 node:0 COMMAND propose
+5 SEND src:0 dest:1 proto:0 attack at 2105086907528928693
+6 node:0 TIMESTEP time:2
+7 node:1 TIMESTEP time:2
+8 RECVD src:0 dest:1 proto:0 attack at 2105086907528928693
+9 SEND src:1 dest:0 proto:0 ack attack at 2105086907528928693
+10 node:0 TIMESTEP time:3
+11 node:1 TIMESTEP time:3
+12 RECVD src:1 dest:0 proto:0 ack attack at 2105086907528928693
+13 SEND src:0 dest:1 proto:0 ack ack attack at 2105086907528928693
+14 node:0 TIMESTEP time:4
+15 node:1 TIMESTEP time:4
+16 RECVD src:0 dest:1 proto:0 ack ack attack at 2105086907528928693
+17 SEND src:1 dest:0 proto:0 ack ack ack attack at 2105086907528928693
+18 node:0 TIMESTEP time:5
+19 node:1 TIMESTEP time:5
+20 DELAY src:1 dest:0 proto:0 ack ack ack attack at 2105086907528928693
+21 node:0 TIMESTEP time:6
+22 node:1 TIMESTEP time:6
+23 RECVD src:1 dest:0 proto:0 ack ack ack attack at 2105086907528928693
+24 SEND src:0 dest:1 proto:0 ack ack ack ack attack at 2105086907528928693
+25 node:0 TIMESTEP time:7
+26 node:1 TIMESTEP time:7
+27 DELAY src:0 dest:1 proto:0 ack ack ack ack attack at 2105086907528928693
+28 node:0 FAILURE
+29 node:1 TIMESTEP time:8
+30 DELAY src:0 dest:1 proto:0 ack ack ack ack attack at 2105086907528928693
+31 node:1 TIMESTEP time:9
+32 RECVD src:0 dest:1 proto:0 ack ack ack ack attack at 2105086907528928693
+33 SEND src:1 dest:0 proto:0 ack ack ack ack ack attack at 2105086907528928693
+34 node:1 TIMESTEP time:10
+35 node:1 TIMESTEP time:11
+36 node:1 STOPPED

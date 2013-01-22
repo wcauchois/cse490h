@@ -1,0 +1,9 @@
+1298164719964	Rename field 'unknownProtocolColor'
+1298166120458	Rename method 'genDisplayStart'
+1298322787773	Rename method 'weAreLeader'
+1298322945931	Delete element
+1298324899275	Rename method 'initializeStaticConfigState'
+1298324915705	Rename method 'loadConfig'
+1298324949125	Rename method 'ensureConfigLoaded'
+1298330775757	Rename field 'pxIdToProposer'
+1298332920215	Rename type 'AggregateServicesProxy'

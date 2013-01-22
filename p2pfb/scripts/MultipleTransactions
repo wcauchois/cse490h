@@ -1,0 +1,37 @@
+start 0
+start 1
+start 2
+time
+1 txstart
+time
+1 create
+2 txstart
+time
+1 create foo.txt
+time
+1 put foo.txt hello_world
+time
+2 get foo.txt
+time
+1 txcommit
+time
+time
+time
+time
+time
+time
+time
+time
+2 txcommit
+time
+time
+time
+time
+time
+time
+time
+time
+time
+time
+time
+time

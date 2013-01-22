@@ -1,0 +1,67 @@
+option java_package = "paxos";
+import "proj/RPCProtos.proto";
+
+enum Type {
+    // received by acceptor
+    PREPARE_REQUEST = 0;
+    ACCEPT_REQUEST = 1;
+
+    // received by proposer
+    PROMISE = 2;
+    
+    // recevied by learner
+    ACCEPTED_PROPOSAL = 3;
+
+    // received by monitor
+    HEARTBEAT = 4;
+}
+
+enum Role {
+    PROPOSER = 0;
+    ACCEPTOR = 1;
+    LEARNER = 2;
+    MONITOR = 4;
+    TXSERVER = 5;
+    TXCLIENT = 6;
+}
+
+message Envelope {
+    required Type type = 1;
+    required bytes payload = 2;
+    optional int32 pxId = 3;
+}
+
+// right now, we only deal with integer values
+// in the future, we could generalize
+
+// proposer -> acceptor
+message PrepareRequest {
+    required int32 n = 1;
+}
+
+// simple immutable datastructure, used in places...
+message Proposal {
+    required int32 n = 1;
+    required CommitAttempt v = 2;
+}
+
+// acceptor -> proposer in response to PrepareRequest, if acceptor wants to respond
+message Promise {
+    required int32 prepareN = 1;
+    // highest (n, v) that it had accepted previously
+    optional Proposal acceptedPreviously = 2;
+    // if this field is not present, it means the acceptor has not accepted any proposals previously!
+}
+
+// acceptor -> proposer
+message AcceptRequest {
+    required Proposal proposal = 1;
+}
+
+// acceptor -> learner
+// XXX: what if there are duplicates of this message? should we use RIO?
+message AcceptedProposal {
+    required Proposal proposal = 1;
+}
+
+message Heartbeat { }

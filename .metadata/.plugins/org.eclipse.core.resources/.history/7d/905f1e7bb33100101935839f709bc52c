@@ -1,0 +1,109 @@
+package transactions;
+
+import java.io.IOException;
+import java.util.*;
+
+import main.ErrorCode;
+import main.FSUtil;
+
+import primitives.Handle;
+import proto.RPCProtos.DataResponse;
+import proto.RPCProtos.Update;
+
+public class TransactionServer extends TransactionNodeBase {
+    private FSUtil filesystem;
+    private UndoLog undoLog;
+    public static final String LOG_FILENAME = "server.log";
+    
+    public TransactionServer(TransactionNode n) {
+        super(n);
+    }
+    
+    @Override
+    public void start() {
+        filesystem = new FSUtil(n);
+        undoLog = new UndoLog(n, LOG_FILENAME);
+    }
+    
+    private class FileInfo {
+        private int version;
+        
+        public int getVersion() {
+            return version;
+        }
+        public int incrementVersion() {
+            return ++version;
+        }
+        public void revert(int oldVersion) {
+            version = oldVersion;
+        }
+        
+        public FileInfo() {
+            this.version = 0;
+        }
+    }
+    
+    private Map<String, FileInfo> fileTable = new HashMap<String, FileInfo>();
+    
+    // return the FileInfo object associated with the filename, or create a new one if it doesn't exist
+    private FileInfo getInfo(String filename) {
+        if(fileTable.containsKey(filename))
+            return fileTable.get(filename);
+        else
+            return fileTable.put(filename, new FileInfo());
+    }
+
+    @Override
+    public void onCommand(String cmd) {
+    }
+    
+    private class CacheUndoer implements UndoLog.Undoer {
+        public void undoWrite(String filename, int oldVersion, String oldContents) {
+            getInfo(filename).revert(oldVersion);
+            
+        }
+    }
+
+    public Handle<Object> handleCommitAttempt(int from, List<Update> updates) {
+        Handle<Object> resultHandle = new Handle<Object>();
+        // first, iterate through all the updates and make sure they're based off the right version
+        for(Update u : updates) {
+            switch(u.getType()) {
+            case Read:
+            case Write:
+            case Delete:
+                if(u.getVersion() != getInfo(u.getFilename()).getVersion())
+                    return resultHandle.completedError(ErrorCode.ERR_TRANSACTION_FAILED);
+                break;
+            case Create:
+                break;
+            }
+        }
+        
+        // next, iterate through the updates again and try to perform the actions
+        undoLog.logTxStart();
+        for(Update u : updates) {
+            switch(u.getType()) {
+            case Read:
+                // do nothing; the read was already performed on the client
+                break;
+            case Write:
+                // update the server's copy to reflect the modifications
+                try {
+                    String oldContents = filesystem.getContents(u.getFilename());
+                    undoLog.logWrite(u.getFilename(), u.getVersion(), oldContents);
+                    filesystem.writeContents(u.getFilename(), u.getContents());
+                } catch(IOException e) {
+                }
+                getInfo(u.getFilename()).incrementVersion();
+                break;
+            }
+        }
+        return null;
+    }
+
+    public Handle<DataResponse> handleDataRequest(int from, String filename) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+}

@@ -1,0 +1,12 @@
+option java_package = "transactions";
+
+message FileInfo {
+    required string filename = 1;
+    required int32 version = 2;
+    repeated int32 copyset = 3;
+}
+
+message FileTable {
+    repeated FileInfo files = 1;
+}
+

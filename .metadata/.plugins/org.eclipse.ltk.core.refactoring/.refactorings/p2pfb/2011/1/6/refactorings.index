@@ -1,0 +1,5 @@
+1296504492779	Rename method 'chooseNewFilename'
+1296504527179	Rename local variable 'filename'
+1296504536917	Rename field 'usedFilenames'
+1296505590513	Rename field 'hasLastActionCompleted'
+1296510119323	Rename method 'randomNode'

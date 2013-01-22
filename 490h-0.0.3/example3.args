@@ -1,0 +1,32 @@
+# (ignored) TIMESTEP:
+# -r ^(?<TIME>) node:(?<nodename>.+) TIMESTEP time:(?<time>.+)$(?<TYPE=>TIMESTEP)
+
+# COMMAND:
+-r ^(?<TIME>) node:(?<nodename>.+) COMMAND(?<TYPE>)$
+
+# SEND:
+-r ^(?<TIME>) SEND src:(?<nodename>.+) dest:(?<dest>.+) proto:(?<proto>.) (?<payload>.*)$(?<TYPE=>SEND)
+
+# RECVD:
+-r ^(?<TIME>) RECVD src:(?<src>.+) dest:(?<nodename>.+) proto:(?<proto>.) (?<payload>.*)$(?<TYPE=>RECVD)
+
+# DELAY:
+-r ^(?<TIME>) DELAY src:(?<src>.+) dest:(?<nodename>.+) proto:(?<proto>.) (?<payload>.*)$(?<TYPE=>DELAY)
+
+# DROP:
+-r ^(?<TIME>) DROP src:(?<src>.+) dest:(?<nodename>.+) proto:(?<proto>.) (?<payload>.*)$(?<TYPE=>DROP)
+
+# START/FAILURE/STOPPED:
+-r ^(?<TIME>) node:(?<nodename>.+) START$(?<TYPE=>START)
+-r ^(?<TIME>) node:(?<nodename>.+) FAILURE$(?<TYPE=>FAILURE)
+-r ^(?<TIME>) node:(?<nodename>.+) STOPPED$(?<TYPE=>STOPPED)
+
+# Map each line to the partition named by the parsed
+# "nodename-filename" combination:
+-m \\k<nodename>-\\k<FILE>
+
+# Path prefix where to generate output:
+-o output/example3
+
+# Ignore lines in the logs that do not match the expressions above:
+-i

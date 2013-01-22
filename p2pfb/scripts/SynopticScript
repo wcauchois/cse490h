@@ -1,0 +1,102 @@
+start 0
+start 1
+start 2
+time
+time
+1 create foo.txt
+time
+time
+time
+time
+time
+time
+2 get foo.txt
+time
+time
+time
+time
+time
+time
+time
+time
+2 put foo.txt wee
+time
+time
+time
+time
+time
+time
+time
+time
+time
+time
+time
+time
+1 put foo.txt wee
+time
+time
+time
+time
+time
+time
+time
+time
+time
+time
+time
+2 get foo.txt
+time
+time
+time
+time
+time
+time
+time
+1 get foo.txt
+time
+time
+time
+time
+time
+time
+time
+time
+1 delete foo.txt
+time
+time
+time
+time
+time
+time
+2 create foo.txt
+time
+time
+time
+time
+time
+time
+time
+time
+1 get foo.txt
+time
+time
+time
+time
+time
+time
+time
+time
+time
+1 delete foo.txt
+time
+time
+time
+time
+time
+time
+time
+time
+time
+time
+time
+time

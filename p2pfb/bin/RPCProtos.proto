@@ -1,0 +1,92 @@
+option java_package = "proto";
+
+// TODO(bill): this file should be factored out of the "proto" package!
+
+message RPCEnvelope {
+    enum Type {
+        DataRequest = 0;
+        DataResponse = 1;
+        CommitAttempt = 2;
+        CommitResponse = 3;
+        InvalidateRequest = 4;
+        SyncRequest = 5;
+        SyncResponse = 6;
+    }
+    
+    required Type type = 1;
+    required int32 callID = 2;
+    required int32 errorCode = 3;
+    //     ERR_NONE = 0;
+    //     ERR_FILE_NOT_FOUND = 10; 
+    //     ERR_FILE_EXISTS = 11;
+    //     ERR_IO_EXCEPTION = 12;
+    //     ERR_TIMEOUT = 20;
+    //     ERR_FILE_TOO_LARGE = 30;
+
+    optional bytes payload = 4;
+}
+
+message DataRequest {
+    required string filename = 1;
+    // repeated?
+}
+
+message DataResponse {
+    optional int32 forwardTo = 1; // if this is set, the server was not the leader 
+    optional string filename = 2;
+    optional int32 version = 3;
+    optional string contents = 4;
+}
+
+message VersionUpdate {
+    required string filename = 1;
+    required int32 version = 2;
+}
+
+// this should really be an inner class of Commit, but this way we don't have
+// to type as much
+message Update {
+       enum Type {
+            Delete = 0;
+            Create = 1;
+            Write = 2;
+            Read = 3;
+       }
+
+       // hmmm, a little redundant with the Data message...
+       required Type type = 1;
+       required string filename = 2;
+       optional int32 version = 3; // optional for create()s
+       optional string contents = 4;
+}
+
+message CommitAttempt {
+    required int32 from = 1;
+    required int32 id = 2;
+    repeated Update updates = 3;
+}
+
+message CommitResponse {
+    optional int32 forwardTo = 1; // if this is set, the server was not the leader 
+    repeated VersionUpdate updatedVersions = 2;
+}
+
+message InvalidateRequest {
+    repeated string files = 1;
+}
+
+// OUT OF PLACE!!! 
+// I need a mapping from pxid -> tx for sync
+// requests... but protobuf doesn't support hashmaps
+message ChosenTransaction {
+    required int32 pxid = 1;
+    required CommitAttempt tx = 2;
+}
+
+// TODO: add in the commits we already know of so that 
+//       we don't use too much uneccessary bandwidth
+message SyncRequest {}
+
+message SyncResponse {
+    repeated ChosenTransaction chosen = 1;
+}

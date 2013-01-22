@@ -1,0 +1,5 @@
+-r ^(?<TIME>) node:(?<nodename>.+) USER-EVENT ACCESS-CHANGE (?<FILE>.+) (?<TYPE>.+)
+
+# Map each line to the partition named by the parsed
+# "nodename-filename" combination:
+-m \\k<nodename>-\\k<FILE>

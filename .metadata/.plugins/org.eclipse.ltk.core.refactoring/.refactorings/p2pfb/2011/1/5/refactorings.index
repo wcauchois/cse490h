@@ -1,0 +1,21 @@
+1295835071633	Rename type 'RPCStubLayer'
+1295836293146	Rename type 'Listener'
+1295910989925	Delete element
+1295911306080	Move compilation units
+1295911370322	Move type
+1295911383302	Rename type 'ResultListener'
+1295911484918	Move compilation units
+1295911552747	Move compilation unit
+1295911561415	Move compilation unit
+1295911569985	Move compilation unit
+1295911573688	Move compilation unit
+1295911610457	Move compilation units
+1295911701971	Rename type 'TransmissionProtocol'
+1295911709066	Rename type 'AppProtocol'
+1296025789065	Rename local variable 'queryResult'
+1296025960162	Rename local variable 'result'
+1296025967754	Rename local variable 'result'
+1296027770771	Rename local variable 'i'
+1296193708178	Rename local variable 'readData'
+1296265529925	Change method 'invalidate'
+1296272392800	Encapsulate field 'access'

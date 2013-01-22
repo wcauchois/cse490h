@@ -1,0 +1,10 @@
+# A line consists of the event type. This uses inferred TIME, which
+# uses the line number as the corresponding time:
+-r (?<TYPE>)
+
+# Specify a separator for partitions. Lines above and below the line
+# that matches this expression are mapped to the same partition:
+-s ---
+
+# Path prefix where to generate output:
+-o output/example1

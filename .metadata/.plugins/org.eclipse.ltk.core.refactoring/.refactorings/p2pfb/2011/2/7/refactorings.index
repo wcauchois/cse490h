@@ -1,0 +1,12 @@
+1297039298906	Rename field 'fileSystem'
+1297039304729	Rename field 'cachedFiles'
+1297041515406	Rename local variable 'u'
+1297041523912	Rename local variable 'u'
+1297042927297	Rename local variable 'entriesToUndo'
+1297043117489	Rename local variable 'writesToUndo'
+1297043233085	Rename local variable 'e'
+1297043237641	Rename local variable 'e'
+1297122340015	Rename local variable 'message'
+1297122346008	Rename local variable 'message'
+1297303933994	Rename field 'completed'
+1297311937466	Delete element

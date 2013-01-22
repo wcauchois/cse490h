@@ -1,0 +1,5 @@
+[
+    { path: '/',
+      handler: 'handlers.RootHandler'
+    }
+]

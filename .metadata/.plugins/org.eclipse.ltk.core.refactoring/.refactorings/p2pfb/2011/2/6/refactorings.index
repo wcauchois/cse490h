@@ -1,0 +1,4 @@
+1296781636462	Move compilation units
+1296792723772	Rename local variable 'contents'
+1296792771050	Rename local variable 'version'
+1296795672023	Rename method 'testParseLogFile'

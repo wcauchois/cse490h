@@ -1,0 +1,38 @@
+package transactions;
+
+import java.util.List;
+
+import primitives.Handle;
+import primitives.Logger;
+import proto.RPCProtos.DataResponse;
+import proto.RPCProtos.Update;
+
+public abstract class TransactionNodeBase implements Logger {
+    private TransactionNode n;
+    public TransactionNodeBase(TransactionNode n) {
+        this.n = n;
+    }
+    
+    public void start() { }
+    
+    public abstract void onCommand(String cmd);
+    
+    public Handle<DataResponse> sendDataRequest(int dest, String filename) {
+        return n.sendDataRequest(dest, filename);
+    }
+    public Handle<Boolean> sendCommitAttempt(int dest, List<Update> updates) {
+        return n.sendCommitAttempt(dest, updates);
+    }
+    
+    public void sendInvalidateRequest(int dest, List<String> files) {
+        n.sendInvalidateRequest(dest, files);
+    }
+    
+    public void log(String msg) {
+        n.log(msg);
+    }
+    
+    public void logError(String msg) {
+        n.logError(msg);
+    }
+}

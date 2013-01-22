@@ -1,0 +1,329 @@
+package transactions;
+
+import java.io.IOException;
+import java.util.*;
+
+import org.omg.CORBA_2_3.portable.OutputStream;
+
+import com.sun.activation.registries.LogSupport;
+
+import edu.washington.cs.cse490h.lib.PersistentStorageInputStream;
+import edu.washington.cs.cse490h.lib.PersistentStorageOutputStream;
+
+import main.ErrorCode;
+import main.FSUtil;
+
+import primitives.Handle;
+import proto.TransactionProtos;
+import proto.RPCProtos.DataResponse;
+import proto.RPCProtos.Update;
+import proto.RPCProtos.VersionUpdate;
+
+public class TransactionServer extends TransactionNodeBase {
+    private FSUtil filesystem;
+    private UndoLog undoLog;
+    public static final String LOG_FILENAME = "server.log";
+    public static final String FILE_TABLE_FILENAME = "server.tbl";
+    
+    public TransactionServer(TransactionNode n) {
+        super(n);
+    }
+    
+    @Override
+    public void start() {
+        super.start();
+        log("starting up...");
+        filesystem = new FSUtil(n);
+        undoLog = new UndoLog(n, LOG_FILENAME);
+        undoLog.recover(cacheUndoer);
+    }
+    
+    private static class FileInfo {
+        private String filename;
+        private int version;
+        public List<Integer> copyset;
+        
+        public int getVersion() {
+            return version;
+        }
+        public int incrementVersion() {
+            return ++version;
+        }
+        public void revert(int oldVersion) {
+            version = oldVersion;
+        }
+        public String getFilename() {
+            return filename;
+        }
+        
+        public FileInfo(String filename) {
+            this(filename, 0);
+        }
+        public FileInfo(String filename, int version) {
+            this.filename = filename;
+            this.version = version;
+            this.copyset = new ArrayList<Integer>();
+        }
+        
+        public TransactionProtos.FileInfo toProto() {
+            return TransactionProtos.FileInfo.newBuilder()
+                .setFilename(filename)
+                .setVersion(version)
+                .addAllCopyset(copyset)
+                .build();
+        }
+        
+        public static FileInfo fromProto(TransactionProtos.FileInfo proto) {
+            FileInfo info = new FileInfo(proto.getFilename(), proto.getVersion());
+            info.copyset.addAll(proto.getCopysetList());
+            return info;
+        }
+    }
+    
+    private Map<String, FileInfo> fileTable = new HashMap<String, FileInfo>();
+    
+    private void saveFileTable() {
+        TransactionProtos.FileTable.Builder builder = TransactionProtos.FileTable.newBuilder();
+        for(FileInfo info : fileTable.values())
+            builder.addFiles(info.toProto());
+        try {
+            PersistentStorageOutputStream out = n.getOutputStream(FILE_TABLE_FILENAME, false);
+            builder.build().writeTo(out);
+            out.flush();
+            out.close();
+        } catch(IOException e) {
+            System.err.println("failed to save file table to disk!");
+            System.exit(1);
+        }
+    }
+    
+    private void loadFileTable() {
+        fileTable.clear();
+        try {
+            PersistentStorageInputStream in = n.getInputStream(FILE_TABLE_FILENAME);
+            TransactionProtos.FileTable data = TransactionProtos.FileTable.parseFrom(in);
+            for(int i = 0; i < data.getFilesCount(); i++) {
+                FileInfo info = FileInfo.fromProto(data.getFiles(i));
+                fileTable.put(info.filename, info);
+            }
+        } catch(IOException e) {
+            System.err.println("failed to load the file table from disk!");
+            n.fail();
+        }
+    }
+
+    @Override
+    public void onCommand(String cmd) {
+        if(cmd.startsWith("info")) {
+            logSuccess("contents of the file table:");
+            for(String filename : fileTable.keySet()) {
+                FileInfo info = fileTable.get(filename);
+                log("\t" + filename + "(" + info.getVersion() + ") has copyset "
+                        + Arrays.toString(info.copyset.toArray()));
+            }
+        } else
+            logError("unrecognized command");
+    }
+    
+    private class CacheUndoer implements UndoLog.Undoer {
+        public void undoWrite(String filename, int oldVersion, String oldContents) {
+            log("undoing write of " + filename + " (revert to v" + oldVersion + ")");
+            fileTable.get(filename).revert(oldVersion);
+            try {
+                filesystem.writeContents(filename, oldContents);
+            } catch(IOException e) { /* balls */ }
+        }
+        public void undoDelete(String filename, int oldVersion, String oldContents) {
+            log("undoing delete of " + filename + " (revert to v" + oldVersion + ")");
+            // the opposite of a delete is a create (profound, i know)
+            fileTable.put(filename, new FileInfo(filename, oldVersion));
+            try {
+                filesystem.createFile(filename);
+                filesystem.writeContents(filename, oldContents);
+            } catch(IOException e) { /* balls */ }
+        }
+        public void undoCreate(String filename) {
+            log("undoing create of " + filename);
+            // the opposite of a create is a delete
+            fileTable.remove(filename);
+            try {
+                filesystem.deleteFile(filename);
+            } catch(IOException e) { /* balls */ }
+        }
+    }
+    private CacheUndoer cacheUndoer = new CacheUndoer(); // only need one instance...
+
+    public Handle<List<VersionUpdate>> handleCommitAttempt(int from, List<Update> updates) {
+        Handle<List<VersionUpdate>> resultHandle = new Handle<List<VersionUpdate>>();
+        // first, iterate through all the updates and make sure they're based off the right version
+        for(Update update : updates) {
+            switch(update.getType()) {
+            case Read:
+            case Write:
+            case Delete:
+                FileInfo info = fileTable.get(update.getFilename());
+                if(info != null && update.getVersion() != info.getVersion()) {
+                    logError("transaction from " + from + " failed: version mismatch on " + update.getFilename());
+                    logError("\tgot " + update.getVersion() + ", expected " + info.getVersion());
+                    return resultHandle.completedError(ErrorCode.ERR_TRANSACTION_FAILED);
+                } // else, if info == null, then it has to be created in this tx
+                break;
+            case Create:
+                break;
+            }
+        }
+        
+        log("executing transaction from " + from + " (# of updates is " + updates.size() + ")");
+        // next, iterate through the updates again and try to perform the actions
+        undoLog.logTxStart();
+        
+        // mapping from file names to their copy sets. we need the copy set in this datastructure since
+        // for a delete operation, we delete the FileInfo object from the fileTable.
+        // XXX: is there a better way than "inverting" this map?
+        Map<String, List<Integer>> filesToInvalidate = new TreeMap<String, List<Integer>>();
+        List<VersionUpdate> versionUpdates = new ArrayList<VersionUpdate>();
+        try {
+            for(Update update : updates) {
+                String filename = update.getFilename(), oldContents;
+                FileInfo info;
+                switch(update.getType()) {
+                case Read:
+                    // do nothing; the read was already performed on the client
+                    break;
+                // for write, create, and delete: update the server's copy to reflect the modifications
+                case Write:
+                    if(!fileTable.containsKey(filename)) {
+                        logError("transaction from " + from + " failed: file " + filename + " not found");
+                        undoLog.txAbort(cacheUndoer);
+                        return resultHandle.completedError(ErrorCode.ERR_FILE_NOT_FOUND);
+                    }
+                    
+                    log("\twrite to " + update.getFilename() + ": " + update.getContents());
+                    oldContents = filesystem.getContents(filename);
+                    // log the write before we update the filesystem
+                    undoLog.logWrite(filename, update.getVersion(), oldContents);
+                    info = fileTable.get(filename);
+                    int newVersion = info.incrementVersion(); // update our in-memory representation!
+                    versionUpdates.add(VersionUpdate.newBuilder()
+                            .setFilename(filename)
+                            .setVersion(newVersion)
+                            .build());
+
+                    // we're gonna wanna invalidate the copyset, and the old owner
+                    filesToInvalidate.put(filename, info.copyset);
+                    
+                    filesystem.writeContents(filename, update.getContents());
+                    break;
+                case Create:
+                    if(fileTable.containsKey(filename)) {
+                        logError("transaction from " + from + " failed: file " + filename + " exists");
+                        undoLog.txAbort(cacheUndoer);
+                        return resultHandle.completedError(ErrorCode.ERR_FILE_EXISTS);
+                    }
+                    
+                    log("\tcreate of " + update.getFilename());
+                    // log the create before we update the filesystem
+                    undoLog.logCreate(filename);
+                    // update our in-memory representation!
+                    // create a new FileInfo object with "from" as the owner!
+                    fileTable.put(filename, info = new FileInfo(filename));
+                    info.copyset.add(from); // add the originator to the copyset
+                    filesystem.createFile(filename);
+                    
+                    if(update.hasContents() && !update.getContents().isEmpty()) {
+                        log("\t\twith contents: " + update.getContents());
+                        // we are creating the file with some predefined contents...
+                        filesystem.writeContents(filename, update.getContents());
+                    }
+                    // we don't need to add to filesToInvalidate since the copyset is the empty set
+                    break;
+                case Delete:
+                    if(!fileTable.containsKey(filename)) {
+                        logError("transaction from " + from + " failed: file " + filename + " not found");
+                        undoLog.txAbort(cacheUndoer);
+                        return resultHandle.completedError(ErrorCode.ERR_FILE_NOT_FOUND);
+                    }
+                    
+                    log("\tdelete of " + update.getFilename());
+                    oldContents = filesystem.getContents(filename);
+                    undoLog.logDelete(filename, update.getVersion(), oldContents);
+                    info = fileTable.remove(filename); // update our in-memory representation!
+                    // we're gonna wanna invalidate everyone
+                    filesToInvalidate.put(filename, info.copyset);
+                    filesystem.deleteFile(filename);
+                    break;
+                }
+            }
+        } catch(IOException e) {
+            logError("\tencountered IO exception... abort");
+            undoLog.txAbort(cacheUndoer);
+            return resultHandle.completedError(ErrorCode.ERR_IO_EXCEPTION);
+        }
+        
+        logSuccess("COMMIT");
+        undoLog.logTxCommit();
+
+        // okay, now we need to invalidate all the files we modified
+        log("invalidating copysets...");
+        
+        // convert the mapping from files to copysets to a mapping from clients to which files should be
+        // invalidated on that client (corresponding to a single InvalidateRequest messsage).
+        Map<Integer, List<String>> invalidateRequests = new TreeMap<Integer, List<String>>();
+        for(String filename : filesToInvalidate.keySet()) {
+            List<Integer> copyset = filesToInvalidate.get(filename);
+            for(Integer client : copyset) {
+                List<String> files;
+                if(!invalidateRequests.containsKey(client)) {
+                    invalidateRequests.put(client, files = new ArrayList<String>());
+                } else {
+                    files = invalidateRequests.get(client);
+                }
+                files.add(filename);
+            }
+            if(fileTable.containsKey(filename)) {
+                // the file may not be in the fileTable, if it was deleted...
+                
+                // IMPORTANT: do not remove the originator (from) from the copyset!!
+                List<Integer> copysetPrime = fileTable.get(filename).copyset;
+                boolean containsFrom = copysetPrime.contains(from);
+                copysetPrime.clear();
+                if(containsFrom) copysetPrime.add(from);
+            }
+        }
+        
+        if(invalidateRequests.isEmpty())
+            logSuccess("nothing to invalidate");
+        // now send out the invalidate requests
+        for(Integer client : invalidateRequests.keySet()) {
+            if(client.intValue() == from)
+                continue;
+            // don't need to wait for the invalidate request to complete... the worst that could happen
+            // is that somebody would have to roll back
+            sendInvalidateRequest(client, invalidateRequests.get(client));
+            log("\tsent invalidate to " + client + " of " +
+                    Arrays.toString(invalidateRequests.get(client).toArray()));
+        }
+        
+        logSuccess("DONE");
+        return resultHandle.completedSuccess(versionUpdates);
+    }
+
+    public Handle<DataResponse> handleDataRequest(int from, String filename) {
+        DataResponse.Builder responseBuilder = DataResponse.newBuilder();
+        Handle<DataResponse> resultHandle = new Handle<DataResponse>();
+        if(!fileTable.containsKey(filename)) {
+            return resultHandle.completedError(ErrorCode.ERR_FILE_NOT_FOUND);
+        }
+        FileInfo info = fileTable.get(filename);
+        responseBuilder.setVersion(info.getVersion());
+        responseBuilder.setFilename(filename);
+        try {
+            responseBuilder.setContents(filesystem.getContents(filename));
+        } catch(IOException e) {
+            return resultHandle.completedError(ErrorCode.ERR_IO_EXCEPTION);
+        }
+        info.copyset.add(from); // add the requester to this file's copyset
+        log("handled data request of " + filename + "(" + info.getVersion() + ") from " + from);
+        return resultHandle.completedSuccess(responseBuilder.build());
+    }
+}

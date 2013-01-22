@@ -1,0 +1,43 @@
+start 0
+start 1
+start 2
+time
+1 create foo.txt
+time
+time
+time
+time
+time
+time
+time
+time
+time
+time
+2 put foo.txt wee
+time
+time
+time
+time
+time
+time
+time
+time
+time
+time
+time
+time
+2 delete foo.txt
+time
+time
+time
+time
+time
+time
+time
+time
+0 info
+time
+1 info
+time
+2 info
+time

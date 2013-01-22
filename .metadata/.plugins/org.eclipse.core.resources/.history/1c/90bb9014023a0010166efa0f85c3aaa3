@@ -1,0 +1,50 @@
+package paxos;
+
+import java.util.*;
+
+import paxos.Messages.AcceptedProposal;
+import paxos.Messages.Proposal;
+import edu.washington.cs.cse490h.lib.Node;
+
+public class Learner extends Role {
+    // acceptor addr -> proposal
+    private Map<Integer, Proposal> acceptedProposals = new HashMap<Integer, Proposal>();
+    
+    public Learner(Node node, Services services) {
+        super(node, services);
+    }
+    
+    private Map<Proposal, Integer> getProposalCounts() {
+        // XXX: does hashcode() on proposals work correctly?
+        Map<Proposal, Integer> counts = new HashMap<Proposal, Integer>();
+        for(Proposal proposal : acceptedProposals.values()) {
+            if(counts.containsKey(proposal))
+                counts.put(proposal, counts.get(proposal) + 1);
+            else
+                counts.put(proposal, 1);
+        }
+        return counts;
+    }
+    
+    private Proposal getChosenProposal() {
+        Map<Proposal, Integer> counts = getProposalCounts();
+        for(Map.Entry<Proposal, Integer> pair : counts.entrySet()) {
+            if(Util.isMajorityOf(pair.getValue(), services.getAcceptorAddrs().size())) {
+                return pair.getKey();
+            }
+        }
+        return null; // no proposal has been gosen yet
+    }
+    
+    public void receiveAcceptedProposal(int from, AcceptedProposal message) {
+        Proposal proposal = message.getProposal();
+        acceptedProposals.put(from, proposal);
+        
+        Proposal chosenProposal = getChosenProposal();
+        if(chosenProposal != null) {
+            // XXX: notify whoever that a value has been chosen!!!!!
+            services.logPaxos(this, "learned that (" + chosenProposal.getN()
+                    + ", " + chosenProposal.getV() + ") has been chosen");
+        }
+    }
+}
